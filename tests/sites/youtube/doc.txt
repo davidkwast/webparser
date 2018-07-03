@@ -1,0 +1,23 @@
+https://www.youtube.com/results?search_query=python
+[x.find('a',first=1).attrs['href'] for x in html.find('div.yt-lockup-video')]
+
+
+https://www.youtube.com/watch?v=N4mEzFDjqtA
+
+In [25]: html.find('.watch-title',first=1).text
+Out[25]: 'Python Programming'
+
+In [26]: html.find('.watch-view-count',first=1).text
+Out[26]: '4,467,590 views'
+
+In [27]: html.find('button[title="I like this"]',first=1).text
+Out[27]: '59,694'
+
+In [28]: html.find('button[title="I dislike this"]',first=1).text
+Out[28]: '1,387'
+
+In [36]: html.find('.yt-user-info',first=1).find('a',first=1).attrs['href']
+Out[36]: '/channel/UCwRXb5dUK4cvsHbx-rGzSgw'
+
+In [37]: html.find('.yt-user-photo',first=1).find('a',first=1).attrs['href']
+Out[37]: '/user/derekbanas'
