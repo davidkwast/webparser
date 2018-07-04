@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 requests-html = "*"
+django = "~=2.0"
+python-decouple = "*"
+dj-database-url = "*"
+unipath = "*"
+pytz = "*"
 
 [dev-packages]
 ipython = "*"
