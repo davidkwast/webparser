@@ -1,5 +1,5 @@
 https://www.youtube.com/results?search_query=python
-[x.find('a',first=1).attrs['href'] for x in html.find('div.yt-lockup-video')]
+[x.find('a',first=1).attrs['href'] for x in html.find('.yt-lockup-video')]
 
 
 https://www.youtube.com/watch?v=N4mEzFDjqtA
