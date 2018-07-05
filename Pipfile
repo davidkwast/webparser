@@ -11,6 +11,7 @@ dj-database-url = "*"
 unipath = "*"
 pytz = "*"
 requests = "*"
+youtube-dl = "*"
 
 [dev-packages]
 ipython = "*"
