@@ -4,12 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-requests-html = "*"
+requests-html = "==0.9"
 django = "~=2.0"
 python-decouple = "*"
 dj-database-url = "*"
 unipath = "*"
 pytz = "*"
+requests = "*"
 
 [dev-packages]
 ipython = "*"
