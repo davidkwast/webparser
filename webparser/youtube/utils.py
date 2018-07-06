@@ -16,4 +16,4 @@ def parse_keywords(raw_str):
     return [x.strip() for x in raw_str.split(',') if x[-3:] != '...']
 
 def parse_str_date(raw_str):
-    return dateparser.parse(raw_str.split('Published on ')[-1])
+    return dateparser.parse(raw_str.split('Published on ')[-1] + ' PST') # https://productforums.google.com/forum/#!topic/youtube/41autLEJ8xM
