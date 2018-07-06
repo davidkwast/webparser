@@ -12,6 +12,7 @@ unipath = "*"
 pytz = "*"
 requests = "*"
 youtube-dl = "*"
+dateparser = "*"
 
 [dev-packages]
 ipython = "*"

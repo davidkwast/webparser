@@ -37,14 +37,15 @@ def get_video_info(video_id):
     publish_date_raw = html.find('.watch-time-text', first=1).text
     description_raw = html.find('#eow-description', first=1)
     view_count_raw = html.find('.watch-view-count', first=1).text
-    likes_raw = html.find('button[title="I like this"]', first=1).text
-    dislikes_raw = html.find('button[title="I dislike this"]', first=1).text
+    likes_raw = html.find('.like-button-renderer-like-button span', first=1).text
+    dislikes_raw = html.find('.like-button-renderer-dislike-button span', first=1).text
     user_id_raw = html.find('.yt-user-info',first=1).find('a', first=1).attrs['href']
-    user_username_raw = html.find('span[itemprop="author"]', first=1).find('link', first=1).attrs['href']
+    user_username_raw = html.find('span[itemprop="author"] link', first=1).attrs['href']
     category_raw, license_raw = [x.text for x in html.find('.watch-info-tag-list')]
     return {
         'title': title_raw.strip(),
         'keywords': utils.parse_keywords(keywords_raw),
+        'publish_date': utils.parse_str_date(publish_date_raw),
         'category': category_raw,
         'license': license_raw,
         'view_count': utils.parse_view_count(view_count_raw),
