@@ -22,9 +22,23 @@ def get_search_list(url):
         '_response_obj': response,
     }
 
-def search(query):
+def _search_generator(url, limit):
+    count = 0
+    videos = 1
+    next_page_link = url
+    while count < limit:
+        d = get_search_list(url)
+        videos = d['videos']
+        yield videos
+        next_page_link = d['next_page_link']
+        count += 1
+
+def search(query, limit=100):
     URL = 'https://www.youtube.com/results?search_query='
-    return get_search_list(URL + query)
+    r = []
+    for videos in _search_generator(URL + query, limit):
+        r += videos
+    return r
 
 def get_video_info(video_id):
     COOKIES = {'PREF': 'f1=50000000&gl=BR&hl=en'}
