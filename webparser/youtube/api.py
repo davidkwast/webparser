@@ -55,6 +55,7 @@ def get_video_info(video_id):
         'user_username': utils.parse_user_username(user_username_raw),
         'description_text': str(description_raw.text),
         'description_html': str(description_raw.html),
+        '_video_id': video_id,
         '_url': url,
         '_response_obj': response,
     }
