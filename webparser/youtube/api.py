@@ -23,6 +23,8 @@ def get_search_list(url):
     }
 
 def _search_generator(url, limit):
+    if limit < 1:
+        limit == 1
     count = 0
     videos = 1
     next_page_link = url
@@ -33,7 +35,16 @@ def _search_generator(url, limit):
         next_page_link = d['next_page_link']
         count += 1
 
-def search(query, limit=100):
+def search(query, limit=60):
+    '''Searchs a query string
+    
+    Args:
+        query (str): query string.
+        limit (int): number of search pages to process.
+
+    Returns:
+        list: video id
+    '''
     URL = 'https://www.youtube.com/results?search_query='
     r = []
     for videos in _search_generator(URL + query, limit):
