@@ -31,7 +31,9 @@ def _search_generator(url, limit):
     videos = 1
     next_page_link = url
     while count < limit:
-        d = get_search_list(url)
+        if not next_page_link:
+            break
+        d = get_search_list(next_page_link)
         videos = d['videos']
         yield videos
         next_page_link = d['next_page_link']
@@ -72,11 +74,11 @@ def get_video_info(video_id):
     publish_date_raw = html.find('.watch-time-text', first=1).text
     description_raw = html.find('#eow-description', first=1)
     view_count_raw = html.find('.watch-view-count', first=1).text
-    likes_raw = html.find('.like-button-renderer-like-button span', first=1).text
-    dislikes_raw = html.find('.like-button-renderer-dislike-button span', first=1).text
+    likes_raw = html.find('.like-button-renderer-like-button span', first=1)
+    dislikes_raw = html.find('.like-button-renderer-dislike-button span', first=1)
     user_id_raw = html.find('.yt-user-info',first=1).find('a', first=1).attrs['href']
     user_username_raw = html.find('span[itemprop="author"] link', first=1).attrs['href']
-    category_raw, license_raw = [x.text for x in html.find('.watch-info-tag-list')]
+    category_raw, license_raw = [x.text for x in html.find('.watch-info-tag-list')][:2]
     return {
         'title': title_raw.strip(),
         'keywords': utils.parse_keywords(keywords_raw),

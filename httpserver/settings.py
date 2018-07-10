@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # project apps
-    'httpserver.core',
-    'httpserver.youtube',
+    'core',
+    'youtube',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +119,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False # TODO: check
 
 USE_TZ = True
 
@@ -133,3 +133,8 @@ STATIC_URL = '/static/'
 # custom
 
 AUTH_USER_MODEL = 'core.User'
+
+DATETIME_FORMAT = 'Y-m-d P'
+SHORT_DATETIME_FORMAT = 'Y-m-d P'
+SHORT_DATE_FORMAT = 'Y-m-d'
+DATE_FORMAT = 'Y-m-d'
