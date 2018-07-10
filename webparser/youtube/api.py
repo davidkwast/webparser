@@ -4,6 +4,8 @@ import webparser.api
 from . import utils
 
 def get_search_list(url):
+    '''Gets vided if from search URL'''
+    
     COOKIES = {'PREF': 'f1=50000000&gl=BR&hl=en'}
     SPLIT = '/watch?v='
     response = webparser.api.request(url, cookies=COOKIES)
@@ -36,7 +38,7 @@ def _search_generator(url, limit):
         count += 1
 
 def search(query, limit=60):
-    '''Searchs a query string
+    '''Searches a query string
     
     Args:
         query (str): query string.
@@ -52,6 +54,14 @@ def search(query, limit=60):
     return r
 
 def get_video_info(video_id):
+    '''Gets video data
+    
+    Args:
+        query (str): video id
+
+    Returns:
+        dict: video data
+    '''
     COOKIES = {'PREF': 'f1=50000000&gl=BR&hl=en'}
     YOUTUBE_VIDEO_URL = 'https://www.youtube.com/watch?v='
     url = YOUTUBE_VIDEO_URL + video_id
